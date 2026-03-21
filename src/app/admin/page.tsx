@@ -113,6 +113,7 @@ export default async function AdminDashboard({
                   <option value="Milenio Plaza">MILENIO_PLAZA</option>
                   <option value="El Ensueño">EL_ENSUENO</option>
                   <option value="Mercurio">MERCURIO</option>
+                  <option value="Mi Centro El Porvenir">EL_PORVENIR</option>
                   <option value="Ventura">VENTURA</option>
                   <option value="Mantenimiento">MAINTENANCE_BAY</option>
                 </select>

@@ -25,8 +25,9 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2 text-neutral-500">
               <li><Link href="/catalog" className="hover:text-primary-500 transition-colors">&gt; MILENIO_PLAZA</Link></li>
-              <li><Link href="/catalog/el-ensueno" className="hover:text-primary-500 transition-colors">&gt; EL_ENSUENO</Link></li>
+              <li><Link href="/catalog/el-porvenir" className="hover:text-primary-500 transition-colors">&gt; EL_PORVENIR</Link></li>
               <li><Link href="/catalog/mercurio" className="hover:text-primary-500 transition-colors">&gt; MERCURIO</Link></li>
+              <li><Link href="/catalog/el-ensueno" className="hover:text-primary-500 transition-colors">&gt; EL_ENSUENO</Link></li>
               <li><Link href="/catalog/ventura" className="hover:text-primary-500 transition-colors">&gt; VENTURA</Link></li>
             </ul>
           </div>

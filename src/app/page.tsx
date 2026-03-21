@@ -94,8 +94,8 @@ export default function Home() {
             <h2 className="text-xl font-bold text-white tracking-widest">ACTIVE_NODES</h2>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {['MILENIO_PLAZA', 'MERCURIO', 'EL_ENSUENO', 'VENTURA'].map((node) => (
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {['MILENIO_PLAZA', 'MERCURIO', 'EL_PORVENIR', 'EL_ENSUENO', 'VENTURA'].map((node) => (
               <Link key={node} href={`/catalog/${node.toLowerCase()}`} className="block border border-brand-borderGray bg-brand-grayBg p-4 hover:border-primary-500 transition-all glow-box group">
                 <div className="flex justify-between items-start mb-4">
                   <MapPin className="w-5 h-5 text-neutral-500 group-hover:text-primary-500 transition-colors" />

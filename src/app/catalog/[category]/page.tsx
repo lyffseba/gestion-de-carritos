@@ -8,7 +8,7 @@ const normalize = (str: string) =>
 
 export function generateStaticParams() {
   const categories = Array.from(new Set(MOCK_PRODUCTS.map((p) => normalize(p.category))));
-  return [...categories.map((c) => ({ category: c })), { category: 'mantenimiento' }, { category: 'recolecciones' }, { category: 'el-ensueno' }, { category: 'milenio-plaza' }, { category: 'mercurio' }, { category: 'ventura' }];
+  return [...categories.map((c) => ({ category: c })), { category: 'mantenimiento' }, { category: 'recolecciones' }, { category: 'el-ensueno' }, { category: 'milenio-plaza' }, { category: 'mercurio' }, { category: 'el-porvenir' }, { category: 'ventura' }];
 }
 
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
@@ -25,11 +25,12 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   } else if (normalizedCategory === 'recolecciones') {
     filteredNodes = MOCK_PRODUCTS.filter((p) => (p.coins || 0) > 100);
     sectorName = 'HIGH_COIN_NODES';
-  } else if (['milenio-plaza', 'el-ensueno', 'mercurio', 'ventura'].includes(normalizedCategory)) {
+  } else if (['milenio-plaza', 'el-ensueno', 'mercurio', 'el-porvenir', 'ventura'].includes(normalizedCategory)) {
     const formattedCategoryMap: Record<string, string> = {
       'milenio-plaza': 'Milenio Plaza',
       'el-ensueno': 'El Ensueño',
       'mercurio': 'Mercurio',
+      'el-porvenir': 'Mi Centro El Porvenir',
       'ventura': 'Ventura'
     };
     const exactName = formattedCategoryMap[normalizedCategory];
@@ -40,7 +41,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
     );
   }
 
-  if (filteredNodes.length === 0 && !['mantenimiento', 'recolecciones', 'el-ensueno', 'milenio-plaza', 'mercurio', 'ventura'].includes(normalizedCategory)) {
+  if (filteredNodes.length === 0 && !['mantenimiento', 'recolecciones', 'el-ensueno', 'milenio-plaza', 'mercurio', 'el-porvenir', 'ventura'].includes(normalizedCategory)) {
     notFound();
   }
 

@@ -59,8 +59,9 @@ export default function Header() {
         <nav className="hidden md:block max-w-7xl mx-auto px-4 md:px-6 lg:px-8 border-t border-brand-borderGray/50">
           <ul className="flex space-x-8 text-xs font-mono font-medium text-neutral-500 py-3 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
             <li><Link href="/catalog" className="hover:text-primary-500 transition-colors whitespace-nowrap">/MILENIO_PLAZA</Link></li>
-            <li><Link href="/catalog/el-ensueno" className="hover:text-primary-500 transition-colors whitespace-nowrap">/EL_ENSUENO</Link></li>
+            <li><Link href="/catalog/el-porvenir" className="hover:text-primary-500 transition-colors whitespace-nowrap">/EL_PORVENIR</Link></li>
             <li><Link href="/catalog/mercurio" className="hover:text-primary-500 transition-colors whitespace-nowrap">/MERCURIO</Link></li>
+            <li><Link href="/catalog/el-ensueno" className="hover:text-primary-500 transition-colors whitespace-nowrap">/EL_ENSUENO</Link></li>
             <li><Link href="/catalog/ventura" className="hover:text-primary-500 transition-colors whitespace-nowrap">/VENTURA</Link></li>
             <li><Link href="/catalog/mantenimiento" className="hover:text-brand-accent transition-colors whitespace-nowrap">/MANTENIMIENTO</Link></li>
             <li><Link href="/catalog/recolecciones" className="text-brand-secondary hover:text-yellow-400 font-bold transition-colors whitespace-nowrap">/RECOLECCIONES</Link></li>
@@ -90,8 +91,9 @@ export default function Header() {
             <div className="flex-1 overflow-y-auto py-4">
               <nav className="flex flex-col space-y-1 px-2 text-sm text-neutral-400">
                 <Link href="/catalog" onClick={closeMenu} className="px-3 py-3 rounded-sm hover:bg-brand-grayBg hover:text-primary-500 border-l-2 border-transparent hover:border-primary-500">/MILENIO_PLAZA</Link>
-                <Link href="/catalog/el-ensueno" onClick={closeMenu} className="px-3 py-3 rounded-sm hover:bg-brand-grayBg hover:text-primary-500 border-l-2 border-transparent hover:border-primary-500">/EL_ENSUENO</Link>
+                <Link href="/catalog/el-porvenir" onClick={closeMenu} className="px-3 py-3 rounded-sm hover:bg-brand-grayBg hover:text-primary-500 border-l-2 border-transparent hover:border-primary-500">/EL_PORVENIR</Link>
                 <Link href="/catalog/mercurio" onClick={closeMenu} className="px-3 py-3 rounded-sm hover:bg-brand-grayBg hover:text-primary-500 border-l-2 border-transparent hover:border-primary-500">/MERCURIO</Link>
+                <Link href="/catalog/el-ensueno" onClick={closeMenu} className="px-3 py-3 rounded-sm hover:bg-brand-grayBg hover:text-primary-500 border-l-2 border-transparent hover:border-primary-500">/EL_ENSUENO</Link>
                 <Link href="/catalog/ventura" onClick={closeMenu} className="px-3 py-3 rounded-sm hover:bg-brand-grayBg hover:text-primary-500 border-l-2 border-transparent hover:border-primary-500">/VENTURA</Link>
                 <Link href="/catalog/mantenimiento" onClick={closeMenu} className="px-3 py-3 rounded-sm hover:bg-brand-grayBg hover:text-brand-accent border-l-2 border-transparent hover:border-brand-accent">/MANTENIMIENTO</Link>
                 <Link href="/catalog/recolecciones" onClick={closeMenu} className="px-3 py-3 rounded-sm hover:bg-brand-grayBg text-brand-secondary border-l-2 border-transparent hover:border-brand-secondary font-bold">/RECOLECCIONES</Link>
