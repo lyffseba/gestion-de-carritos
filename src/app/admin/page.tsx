@@ -13,18 +13,41 @@ export default async function AdminDashboard({
 }) {
   const { success } = await searchParams;
   
-  let liveProducts: any[] = [];
+  let liveProducts: Array<{
+    _id: string;
+    name: string;
+    description: string;
+    price: number;
+    category: string;
+    imageUrl: string;
+    status: string;
+    coins: number;
+    createdAt: Date;
+  }> = [];
   let dbError = null;
   
   try {
     await connectDB();
     const docs = await Product.find({}).sort({ createdAt: -1 }).limit(20).lean();
-    liveProducts = docs.map(doc => ({
-      ...doc,
-      _id: doc._id.toString(),
-    }));
-  } catch (error: any) {
-    dbError = error.message || String(error);
+    liveProducts = docs.map((doc: unknown) => {
+      const d = doc as {
+        _id: { toString: () => string };
+        name: string;
+        description: string;
+        price: number;
+        category: string;
+        imageUrl: string;
+        status: string;
+        coins: number;
+        createdAt: Date;
+      };
+      return {
+        ...d,
+        _id: d._id.toString(),
+      };
+    });
+  } catch (error: unknown) {
+    dbError = error instanceof Error ? error.message : String(error);
   }
 
   const formatPrice = (price: number) => {

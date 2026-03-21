@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Activity, Battery, MapPin, AlertCircle, Cpu } from 'lucide-react';
+import { Activity, MapPin, Cpu } from 'lucide-react';
 import type { Product } from '@/lib/mockData';
 
 export function ProductCard({ product }: { product: Product }) {
