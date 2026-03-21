@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Activity, BatteryCharging, AlertTriangle, ShieldCheck, Cpu, Terminal, MapPin } from 'lucide-react';
+import { Activity, MapPin, AlertCircle, Wrench } from 'lucide-react';
 import { ProductGrid } from '@/components/ui/ProductGrid';
 import { MOCK_PRODUCTS } from '@/lib/mockData';
 
@@ -11,116 +11,113 @@ export default function Home() {
   const maintenanceUnits = MOCK_PRODUCTS.filter(p => p.status !== 'Operativo').length;
 
   return (
-    <div className="font-mono text-neutral-300 min-h-screen pb-20">
+    <div className="font-sans text-neutral-300 min-h-screen pb-20 bg-brand-dark">
       
-      {/* COMMAND CENTER HEADER */}
-      <div className="relative w-full border-b border-brand-borderGray bg-brand-grayBg/50 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-12">
+      {/* HEADER SECTION */}
+      <div className="relative w-full border-b border-neutral-800 bg-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-10 md:py-16">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
-              <h1 className="text-3xl md:text-4xl font-black text-white tracking-widest flex items-center gap-3">
-                <Terminal className="w-8 h-8 text-primary-500" />
-                OVERVIEW
+              <h1 className="text-3xl md:text-5xl font-bold text-white tracking-tight flex items-center gap-3">
+                Panel de Flota
               </h1>
-              <p className="text-neutral-500 mt-2 text-sm max-w-xl">
-                Real-time fleet monitoring and control center. System is currently routing data from 4 active locations.
+              <p className="text-neutral-400 mt-3 text-sm md:text-base max-w-xl">
+                Monitoreo en tiempo real de la flota de carritos a través de todas las ubicaciones activas.
               </p>
             </div>
             
             <div className="flex gap-4">
-              <div className="bg-brand-dark border border-primary-500/30 glow-box rounded-sm px-4 py-3 text-center">
-                <div className="text-[10px] text-primary-500 mb-1">NETWORK_STATUS</div>
-                <div className="text-white font-bold text-sm flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse"></span>
-                  SECURE
-                </div>
-              </div>
+              <Link href="/admin" className="bg-white text-black hover:bg-neutral-200 transition-colors font-medium text-sm px-5 py-2.5 rounded-md flex items-center gap-2">
+                Añadir Vehículo
+              </Link>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-10">
         
         {/* TOP METRICS DASHBOARD */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16">
           
-          <div className="bg-brand-grayBg border border-brand-borderGray p-5 rounded-sm relative overflow-hidden group hover:border-primary-500/50 transition-colors">
-            <div className="absolute -right-4 -top-4 text-neutral-800 opacity-20 group-hover:text-primary-500/10 transition-colors">
-              <Cpu className="w-24 h-24" />
+          <div className="bg-[#111111] border border-neutral-800 p-6 rounded-xl hover:border-neutral-600 transition-colors">
+            <div className="flex items-center gap-2 text-neutral-400 mb-4 text-sm font-medium">
+              <Activity className="w-4 h-4" /> Unidades Activas
             </div>
-            <div className="text-[10px] text-neutral-500 mb-2">ACTIVE_UNITS</div>
-            <div className="text-3xl font-bold text-white flex items-end gap-2">
-              {activeUnits} <span className="text-sm text-primary-500 mb-1">ONLINE</span>
+            <div className="text-4xl font-bold text-white mb-1">
+              {activeUnits}
             </div>
+            <p className="text-xs text-neutral-500">Operativas actualmente</p>
           </div>
 
-          <div className="bg-brand-grayBg border border-brand-borderGray p-5 rounded-sm relative overflow-hidden group hover:border-brand-secondary/50 transition-colors">
-             <div className="absolute -right-4 -top-4 text-neutral-800 opacity-20 group-hover:text-brand-secondary/10 transition-colors">
-              <BatteryCharging className="w-24 h-24" />
+          <div className="bg-[#111111] border border-neutral-800 p-6 rounded-xl hover:border-neutral-600 transition-colors">
+             <div className="flex items-center gap-2 text-neutral-400 mb-4 text-sm font-medium">
+              <span className="text-brand-secondary text-base">🪙</span> Monedas Recaudadas
             </div>
-            <div className="text-[10px] text-neutral-500 mb-2">TOTAL_COINS_DETECTED</div>
-            <div className="text-3xl font-bold text-white flex items-end gap-2 glow-text">
-              {totalCoins} <span className="text-sm text-brand-secondary mb-1">🪙</span>
+            <div className="text-4xl font-bold text-white mb-1">
+              {totalCoins}
             </div>
+            <p className="text-xs text-neutral-500">Estimado en cajas</p>
           </div>
 
-          <div className="bg-brand-grayBg border border-brand-borderGray p-5 rounded-sm relative overflow-hidden group hover:border-red-500/50 transition-colors">
-             <div className="absolute -right-4 -top-4 text-neutral-800 opacity-20 group-hover:text-red-500/10 transition-colors">
-              <AlertTriangle className="w-24 h-24" />
+          <div className="bg-[#111111] border border-neutral-800 p-6 rounded-xl hover:border-neutral-600 transition-colors">
+             <div className="flex items-center gap-2 text-red-400 mb-4 text-sm font-medium">
+              <Wrench className="w-4 h-4" /> En Mantenimiento
             </div>
-            <div className="text-[10px] text-neutral-500 mb-2">MAINTENANCE_REQ</div>
-            <div className="text-3xl font-bold text-white flex items-end gap-2">
-              {maintenanceUnits} <span className="text-sm text-red-500 mb-1">WARNINGS</span>
+            <div className="text-4xl font-bold text-white mb-1">
+              {maintenanceUnits}
             </div>
+            <p className="text-xs text-neutral-500">Requieren atención</p>
           </div>
 
-          <div className="bg-brand-grayBg border border-brand-borderGray p-5 rounded-sm relative overflow-hidden group hover:border-primary-500/50 transition-colors">
-             <div className="absolute -right-4 -top-4 text-neutral-800 opacity-20 group-hover:text-primary-500/10 transition-colors">
-              <ShieldCheck className="w-24 h-24" />
+          <div className="bg-[#111111] border border-neutral-800 p-6 rounded-xl hover:border-neutral-600 transition-colors">
+             <div className="flex items-center gap-2 text-neutral-400 mb-4 text-sm font-medium">
+              <AlertCircle className="w-4 h-4" /> Alertas del Sistema
             </div>
-            <div className="text-[10px] text-neutral-500 mb-2">SYSTEM_HEALTH</div>
-            <div className="text-3xl font-bold text-primary-500 flex items-end gap-2">
-              98% <span className="text-sm text-neutral-500 mb-1">NOMINAL</span>
+            <div className="text-4xl font-bold text-white mb-1">
+              0
             </div>
+            <p className="text-xs text-neutral-500">Sin incidencias graves</p>
           </div>
           
         </div>
 
         {/* ACTIVE NODES (LOCATIONS) */}
-        <div className="mb-12">
-          <div className="flex items-center gap-3 mb-6 border-b border-brand-borderGray pb-4">
-            <Activity className="text-primary-500 w-5 h-5" />
-            <h2 className="text-xl font-bold text-white tracking-widest">ACTIVE_NODES</h2>
+        <div className="mb-16">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-xl font-bold text-white tracking-tight">Centros Comerciales</h2>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {['MILENIO_PLAZA', 'MERCURIO', 'EL_PORVENIR', 'EL_ENSUENO', 'VENTURA'].map((node) => (
-              <Link key={node} href={`/catalog/${node.toLowerCase()}`} className="block border border-brand-borderGray bg-brand-grayBg p-4 hover:border-primary-500 transition-all glow-box group">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
+            {[
+              { id: 'milenio-plaza', name: 'Milenio Plaza' },
+              { id: 'el-porvenir', name: 'Mi Centro El Porvenir' },
+              { id: 'mercurio', name: 'Mercurio' },
+              { id: 'el-ensueno', name: 'El Ensueño' },
+              { id: 'ventura', name: 'Ventura' }
+            ].map((node) => (
+              <Link key={node.id} href={`/catalog/${node.id}`} className="block bg-[#111111] border border-neutral-800 rounded-xl p-5 hover:border-neutral-600 transition-all group">
                 <div className="flex justify-between items-start mb-4">
-                  <MapPin className="w-5 h-5 text-neutral-500 group-hover:text-primary-500 transition-colors" />
-                  <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse status-dot-green"></span>
+                  <MapPin className="w-5 h-5 text-neutral-500 group-hover:text-white transition-colors" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#50e3c2]"></span>
                 </div>
-                <div className="text-sm text-white font-bold mb-1">{node}</div>
-                <div className="text-[10px] text-primary-500">STATUS: SYNCED</div>
+                <div className="text-sm md:text-base text-white font-medium mb-1 truncate">{node.name}</div>
+                <div className="text-xs text-neutral-500">Conectado</div>
               </Link>
             ))}
           </div>
         </div>
 
-        {/* FLEET TELEMETRY */}
+        {/* RECENT FLEET */}
         <div>
-          <div className="flex justify-between items-center mb-6 border-b border-brand-borderGray pb-4">
-            <div className="flex items-center gap-3">
-              <Terminal className="text-primary-500 w-5 h-5" />
-              <h2 className="text-xl font-bold text-white tracking-widest">FLEET_TELEMETRY</h2>
-            </div>
-            <Link href="/catalog" className="text-xs text-primary-500 hover:text-white transition-colors flex items-center gap-1">
-              [VIEW_ALL_DATA]
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-xl font-bold text-white tracking-tight">Vehículos Recientes</h2>
+            <Link href="/catalog" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
+              Ver todos &rarr;
             </Link>
           </div>
           
-          <ProductGrid title="" products={featuredProducts} />
+          <ProductGrid products={featuredProducts} />
         </div>
 
       </div>

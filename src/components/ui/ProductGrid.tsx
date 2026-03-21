@@ -9,10 +9,10 @@ export function ProductGrid({
   title?: string;
 }) {
   return (
-    <div className="w-full font-mono">
+    <div className="w-full font-sans">
       {title && (
-        <h2 className="mb-6 text-xl font-bold tracking-widest text-white border-b border-brand-borderGray pb-4 uppercase flex items-center gap-2">
-          <span className="text-primary-500">&gt;</span> {title}
+        <h2 className="mb-6 text-xl font-bold tracking-tight text-white border-b border-neutral-800 pb-4 flex items-center gap-2">
+          {title}
         </h2>
       )}
 

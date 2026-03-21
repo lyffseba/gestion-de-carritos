@@ -1,71 +1,56 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Brand Primary Colors (Darknode - Cyber & Monitoring) */
+  /* Brand Primary Colors (Sober Dark Mode - Vercel/Linear style) */
   --color-brand-dark: #000000;
   --color-brand-light: #ffffff;
-  --color-brand-primary: #00ffcc; /* Neon teal / cyber green */
-  --color-brand-secondary: #ffb800; /* Neon Gold/Yellow for coins */
-  --color-brand-accent: #7b2cbf; /* Deep cyber purple */
+  --color-brand-primary: #ffffff; /* Clean white for primary accents */
+  --color-brand-secondary: #f5a623; /* Subtle gold for coins */
+  --color-brand-accent: #3291ff; /* Vercel blue */
   --color-brand-grayBg: #0a0a0a;
-  --color-brand-borderGray: #1f1f1f;
-
-  /* Mapping for components */
-  --color-accent-500: #ffb800;
-  --color-primary-100: #003328;
-  --color-primary-300: #00997a;
-  --color-primary-500: #00ffcc;
-  --color-primary-700: #00ccaa;
-  --color-primary-900: #006655;
+  --color-brand-borderGray: #333333;
 
   /* Neutral Scale */
-  --color-neutral-50: #050505;
-  --color-neutral-100: #0a0a0a;
-  --color-neutral-200: #141414;
-  --color-neutral-300: #1f1f1f;
-  --color-neutral-400: #333333;
-  --color-neutral-500: #666666;
-  --color-neutral-600: #888888;
-  --color-neutral-700: #aaaaaa;
-  --color-neutral-800: #cccccc;
-  --color-neutral-900: #f5f5f5;
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #eaeaea;
+  --color-neutral-200: #999999;
+  --color-neutral-300: #888888;
+  --color-neutral-400: #666666;
+  --color-neutral-500: #444444;
+  --color-neutral-600: #333333;
+  --color-neutral-700: #222222;
+  --color-neutral-800: #111111;
+  --color-neutral-900: #000000;
 
   /* Typography */
-  --font-sans: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-sans: var(--font-geist-sans), Inter, Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
 :root {
   --background: var(--color-brand-dark);
-  --foreground: var(--color-neutral-900);
+  --foreground: var(--color-neutral-100);
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  background-image: linear-gradient(#1f1f1f 1px, transparent 1px), linear-gradient(90deg, #1f1f1f 1px, transparent 1px);
-  background-size: 40px 40px;
-  background-attachment: fixed;
 }
 
-.glow-box {
-  box-shadow: 0 0 15px rgba(0, 255, 204, 0.1), inset 0 0 20px rgba(0, 255, 204, 0.05);
-  border: 1px solid rgba(0, 255, 204, 0.2);
-}
-
-.glow-text {
-  text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+/* Subtle border for cards */
+.card-border {
+  border: 1px solid var(--color-neutral-700);
 }
 
 .status-dot-green {
-  box-shadow: 0 0 8px #00ffcc;
+  background-color: #50e3c2;
 }
 
 .status-dot-yellow {
-  box-shadow: 0 0 8px #ffb800;
+  background-color: #f5a623;
 }
 
 .status-dot-red {
-  box-shadow: 0 0 8px #ff3333;
+  background-color: #ff0000;
 }
