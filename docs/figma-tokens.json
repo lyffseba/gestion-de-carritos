@@ -1,0 +1,55 @@
+{
+  "global": {
+    "color": {
+      "primary": {
+        "100": { "value": "#EFEBE9", "type": "color" },
+        "300": { "value": "#D7CCC8", "type": "color" },
+        "500": { "value": "#795548", "type": "color", "description": "Brand primary (Wood/Earth)" },
+        "700": { "value": "#4E342E", "type": "color" },
+        "900": { "value": "#3E2723", "type": "color", "description": "High-contrast primary" }
+      },
+      "accent": {
+        "500": { "value": "#C08552", "type": "color", "description": "Terracotta accent for buttons/tags" }
+      },
+      "neutral": {
+        "50": { "value": "#FAFAFA", "type": "color", "description": "Page background" },
+        "100": { "value": "#F5F5F5", "type": "color", "description": "Card background" },
+        "200": { "value": "#E5E5E5", "type": "color", "description": "Borders" },
+        "800": { "value": "#262626", "type": "color", "description": "Secondary text" },
+        "900": { "value": "#171717", "type": "color", "description": "Primary text" }
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "sans": { "value": "Geist, Arial, sans-serif", "type": "typography" },
+        "mono": { "value": "Geist Mono, monospace", "type": "typography" }
+      },
+      "fontSize": {
+        "xs": { "value": "0.75rem", "type": "sizing" },
+        "sm": { "value": "0.875rem", "type": "sizing" },
+        "base": { "value": "1rem", "type": "sizing" },
+        "lg": { "value": "1.125rem", "type": "sizing" },
+        "xl": { "value": "1.25rem", "type": "sizing" },
+        "2xl": { "value": "1.5rem", "type": "sizing" },
+        "3xl": { "value": "1.875rem", "type": "sizing" },
+        "4xl": { "value": "2.25rem", "type": "sizing" }
+      }
+    },
+    "spacing": {
+      "1": { "value": "0.25rem", "type": "spacing" },
+      "2": { "value": "0.5rem", "type": "spacing" },
+      "4": { "value": "1rem", "type": "spacing" },
+      "8": { "value": "2rem", "type": "spacing" },
+      "12": { "value": "3rem", "type": "spacing" },
+      "16": { "value": "4rem", "type": "spacing" }
+    },
+    "borderRadius": {
+      "none": { "value": "0", "type": "borderRadius" },
+      "sm": { "value": "0.125rem", "type": "borderRadius" },
+      "DEFAULT": { "value": "0.25rem", "type": "borderRadius" },
+      "md": { "value": "0.375rem", "type": "borderRadius" },
+      "lg": { "value": "0.5rem", "type": "borderRadius" },
+      "full": { "value": "9999px", "type": "borderRadius" }
+    }
+  }
+}
