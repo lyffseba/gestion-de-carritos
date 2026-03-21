@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { CartDrawer } from '@/components/ui/CartDrawer';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -24,11 +23,11 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'KR_NODE // CORE',
+  title: 'Gestión de Carritos',
   description: 'Sistema de control y monitoreo de flota. Telemetría en tiempo real.',
   appleWebApp: {
     capable: true,
-    title: 'KR_NODE',
+    title: 'Gestión de Carritos',
     statusBarStyle: 'black-translucent',
   },
   formatDetection: {
@@ -49,7 +48,6 @@ export default function RootLayout({
         <Header />
         <main className="flex-1 flex flex-col">{children}</main>
         <Footer />
-        <CartDrawer />
       </body>
     </html>
   );

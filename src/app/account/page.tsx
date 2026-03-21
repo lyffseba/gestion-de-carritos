@@ -5,7 +5,7 @@ export default function AccountPage() {
     <div className="bg-[#f2f2f2] min-h-[80vh] flex items-center justify-center p-4">
       <div className="bg-white rounded-lg shadow-sm max-w-md w-full p-8">
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-[#111111] mb-2">Bienvenido a Kids Rides</h1>
+          <h1 className="text-2xl font-bold text-[#111111] mb-2">Bienvenido a Gestión de Carritos</h1>
           <p className="text-sm text-gray-500">Inicia sesión o regístrate para continuar</p>
         </div>
 
@@ -57,7 +57,7 @@ export default function AccountPage() {
         </div>
 
         <div className="mt-8 text-center text-xs text-gray-500 leading-relaxed">
-          Al registrarte, confirmas que aceptas los <Link href="#" className="text-blue-600 hover:underline font-medium">Términos y Condiciones</Link> y la <Link href="#" className="text-blue-600 hover:underline font-medium">Política de Privacidad</Link> de Kids Rides.
+          Al registrarte, confirmas que aceptas los <Link href="#" className="text-blue-600 hover:underline font-medium">Términos y Condiciones</Link> y la <Link href="#" className="text-blue-600 hover:underline font-medium">Política de Privacidad</Link> de Gestión de Carritos.
         </div>
       </div>
     </div>

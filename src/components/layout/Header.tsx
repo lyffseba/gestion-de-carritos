@@ -25,7 +25,7 @@ export default function Header() {
               <Link href="/" className="flex-shrink-0 flex items-center gap-2 group">
                 <Car className="h-5 w-5 text-white" />
                 <span className="text-lg md:text-xl font-medium text-white tracking-tight">
-                  Kids Rides <span className="text-neutral-500 font-normal">Dashboard</span>
+                  Gestión <span className="text-neutral-500 font-normal">de Carritos</span>
                 </span>
               </Link>
             </div>

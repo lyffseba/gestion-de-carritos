@@ -11,7 +11,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 text-white font-medium mb-4 text-base">
               <Car className="w-5 h-5" />
-              <span>Kids Rides Management</span>
+              <span>Gestión de Carritos</span>
             </div>
             <p className="max-w-xs text-neutral-400">
               Plataforma de gestión, monitoreo e inventario para la flota de vehículos en centros comerciales.
@@ -39,7 +39,7 @@ export default function Footer() {
         
         <div className="border-t border-neutral-800 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-neutral-500">
           <p>Operaciones centralizadas - Bogotá, Colombia.</p>
-          <p>&copy; {currentYear} Kids Rides. Todos los derechos reservados.</p>
+          <p>&copy; {currentYear} Gestión de Carritos. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>
