@@ -19,7 +19,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1, // Prevents iOS input zoom on forms
   userScalable: false,
-  themeColor: '#f8fafc', // Ensures the iPhone 15 dynamic island/status bar blends perfectly
+  themeColor: '#e8e6e1', // Obys bg
 };
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   description: 'Sistema de control y monitoreo de flota. Telemetría en tiempo real.',
   appleWebApp: {
     capable: true,
-    title: 'Gestión de Carritos',
+    title: 'GDC',
     statusBarStyle: 'default',
   },
   formatDetection: {
@@ -43,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-obys-bg text-obys-text`}
       >
         <Header />
         <main className="flex-1 flex flex-col">{children}</main>

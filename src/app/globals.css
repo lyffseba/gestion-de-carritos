@@ -1,44 +1,66 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Brand Primary Colors (Modern Light Control Panel Theme) */
-  --color-brand-dark: #f8fafc; /* slate-50 */
-  --color-brand-light: #ffffff;
-  --color-brand-primary: #4f46e5; /* indigo-600 */
-  --color-brand-secondary: #f5a623; /* Subtle gold for coins */
-  --color-brand-accent: #3291ff; /* Vercel blue */
-  --color-brand-grayBg: #f1f5f9; /* slate-100 */
-  --color-brand-borderGray: #e2e8f0; /* slate-200 */
+  /* Obys Agency Inspired Theme - Brutalist Elegant */
+  --color-brand-dark: #e6e4df; /* Beige/off-white background */
+  --color-brand-light: #f2f1ed; /* Lighter beige for cards */
+  --color-brand-primary: #111111; /* Almost black */
+  --color-brand-secondary: #c02c25; /* Brutalist red accent */
+  --color-brand-accent: #c02c25;
+  --color-brand-grayBg: #dedcd6; /* Darker beige for hover/secondary */
+  --color-brand-borderGray: #111111; /* Hard black borders for that brutalist look */
 
   /* Typography */
-  --font-sans: var(--font-geist-sans), Inter, Arial, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, monospace;
 }
 
 :root {
   --background: var(--color-brand-dark);
-  --foreground: #0f172a; /* slate-900 */
+  --foreground: #111111;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  letter-spacing: -0.02em; /* Tighter letter spacing for that Swiss Graphic Design feel */
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Subtle border for cards */
+/* Hard borders for cards */
 .card-border {
   border: 1px solid var(--color-brand-borderGray);
 }
 
 .status-dot-green {
-  background-color: #10b981; /* emerald-500 */
+  background-color: #111111; /* Monochromatic statuses */
 }
 
 .status-dot-yellow {
-  background-color: #f5a623;
+  background-color: #666666;
 }
 
 .status-dot-red {
-  background-color: #ef4444; /* red-500 */
+  background-color: #c02c25;
+}
+
+/* Custom Obys-style utilities */
+.obys-title {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+}
+
+.obys-border {
+  border: 1px solid #111;
+}
+
+.obys-border-b {
+  border-bottom: 1px solid #111;
+}
+
+.obys-border-t {
+  border-top: 1px solid #111;
 }
