@@ -34,7 +34,7 @@ export default function Header() {
                       alt="Avatar" 
                       width={24} 
                       height={24} 
-                      className="rounded-full grayscale"
+                      className="rounded-full"
                     />
                   )}
                   <span className="truncate max-w-[100px] text-obys-text">
@@ -56,7 +56,7 @@ export default function Header() {
 
           <button onClick={() => setIsMobileMenuOpen(true)} className="md:hidden text-obys-text flex items-center gap-4">
             {session?.user?.image && (
-              <Image src={session.user.image} alt="Avatar" width={28} height={28} className="rounded-full grayscale" />
+              <Image src={session.user.image} alt="Avatar" width={28} height={28} className="rounded-full" />
             )}
             <Menu className="w-8 h-8" />
           </button>

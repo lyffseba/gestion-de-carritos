@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { MOCK_PRODUCTS } from '@/lib/mockData';
-import { AlertTriangle, MapPin, Activity, CheckCircle, Car } from 'lucide-react';
+import { AlertTriangle, MapPin, Activity, CheckCircle } from 'lucide-react';
 import { ProductGrid } from '@/components/ui/ProductGrid';
 
 export function generateStaticParams() {
@@ -26,88 +26,91 @@ export default async function NodeDetailsPage({ params }: { params: Promise<{ id
   const shortId = node.id.slice(0, 6).toUpperCase();
 
   return (
-    <div className="font-sans text-slate-700 min-h-screen pb-20 bg-white">
+    <div className="font-sans min-h-screen bg-obys-bg text-obys-text">
       
       {/* Node Header */}
-      <div className="border-b border-slate-200 bg-slate-50 py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <div className="bg-slate-100 p-2 rounded-lg border border-slate-200">
-              <Car className="text-slate-900 w-5 h-5" />
+      <div className="border-b border-obys-border pt-16 pb-12 md:pt-24 md:pb-16">
+        <div className="max-w-[90%] mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+          <div>
+            <div className="font-mono text-obys-text/60 text-sm tracking-widest uppercase mb-4">
+              ID #{shortId}
             </div>
-            <h1 className="text-slate-900 font-bold tracking-tight text-xl md:text-2xl">
-              Unidad #{shortId}
+            <h1 className="text-4xl md:text-6xl font-medium tracking-tighter uppercase leading-none text-obys-text">
+              {node.name}
             </h1>
           </div>
-          <div className="text-sm font-medium flex items-center gap-2">
-            Estado: <span className={`px-2 py-1 rounded-md ${isOperativo ? 'text-[#50e3c2] bg-[#50e3c2]/10' : 'text-[#f5a623] bg-[#f5a623]/10'}`}>
+          <div className="flex items-center gap-3">
+            <span className={`w-3 h-3 rounded-full ${isOperativo ? 'bg-obys-text' : 'bg-obys-accent'}`}></span>
+            <span className="text-sm font-medium uppercase tracking-widest">
               {node.status || 'Desconocido'}
             </span>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+      <div className="max-w-[90%] mx-auto py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           
           {/* Feed Display (Image) */}
-          <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-50 border border-slate-200 rounded-2xl group">
-            <Image
-              src={node.imageUrl}
-              alt={node.name}
-              fill
-              className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
-              priority
-            />
+          <div className="lg:col-span-7">
+            <div className="relative aspect-square w-full border border-obys-border bg-obys-bg/50">
+              <Image
+                src={node.imageUrl}
+                alt={node.name}
+                fill
+                className="object-cover object-center"
+                priority
+              />
+            </div>
           </div>
 
           {/* Node Diagnostics */}
-          <div className="flex flex-col gap-6">
-            <div>
-              <h2 className="text-3xl font-bold text-slate-900 tracking-tight mb-2">{node.name}</h2>
-              <p className="text-sm text-slate-400 flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-slate-500" /> Ubicación: {node.category}
+          <div className="lg:col-span-5 flex flex-col">
+            <div className="border-b border-obys-border pb-8 mb-8">
+              <h2 className="text-xl font-medium uppercase tracking-widest text-obys-text/60 mb-2">Ubicación</h2>
+              <p className="text-2xl md:text-3xl font-medium tracking-tighter uppercase text-obys-text flex items-center gap-3">
+                <MapPin className="w-6 h-6" /> {node.category}
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white shadow-sm border border-slate-200 p-5 rounded-xl">
-                <p className="text-xs text-slate-400 mb-2 font-medium">
-                  CAJA DE MONEDAS
+            <div className="grid grid-cols-2 border-b border-obys-border mb-8">
+              <div className="border-r border-obys-border pr-8 pb-8">
+                <p className="text-xs text-obys-text/60 mb-4 font-medium uppercase tracking-widest">
+                  Monedas
                 </p>
-                <p className="text-3xl font-bold text-brand-secondary">
-                  🪙 {node.coins || 0}
+                <p className="text-4xl md:text-5xl font-medium tracking-tighter text-obys-text">
+                  {node.coins || 0}
                 </p>
               </div>
-              <div className="bg-white shadow-sm border border-slate-200 p-5 rounded-xl">
-                <p className="text-xs text-slate-400 mb-2 font-medium flex items-center gap-1">
-                  <Activity className="w-3 h-3" /> TARIFA (COP)
+              <div className="pl-8 pb-8">
+                <p className="text-xs text-obys-text/60 mb-4 font-medium uppercase tracking-widest flex items-center gap-2">
+                  <Activity className="w-3 h-3" /> Tarifa
                 </p>
-                <p className="text-3xl font-bold text-slate-900">
+                <p className="text-4xl md:text-5xl font-medium tracking-tighter text-obys-text">
                   ${node.price}
                 </p>
               </div>
             </div>
 
-            <div className="bg-slate-50 border border-slate-200 p-5 rounded-xl text-sm">
-              <p className="text-slate-500 mb-2 font-medium">Notas y detalles:</p>
-              <p className="text-slate-700 leading-relaxed">
+            <div className="mb-12">
+              <p className="text-xs text-obys-text/60 mb-4 font-medium uppercase tracking-widest">Detalles:</p>
+              <p className="text-lg font-medium leading-relaxed text-obys-text">
                 {node.description}
               </p>
             </div>
 
-            <div className="flex flex-col gap-3">
-              <button className={`w-full py-3 rounded-xl border text-sm font-medium flex justify-center items-center gap-2 transition-colors ${
+            <div className="mt-auto">
+              <button className={`w-full py-5 border text-sm font-medium uppercase tracking-widest flex justify-center items-center gap-3 transition-colors ${
                 isOperativo 
-                  ? 'bg-[#50e3c2]/10 border-[#50e3c2]/30 text-[#50e3c2] hover:bg-[#50e3c2] hover:text-black'
-                  : 'bg-[#f5a623]/10 border-[#f5a623]/30 text-[#f5a623] hover:bg-[#f5a623] hover:text-black'
+                  ? 'border-obys-border hover:bg-obys-text hover:text-obys-bg'
+                  : 'bg-obys-accent text-obys-bg border-obys-accent hover:bg-obys-text hover:text-obys-bg hover:border-obys-text'
               }`}>
-                {isOperativo ? <><CheckCircle className="w-4 h-4"/> Confirmar Inspección Visual</> : <><AlertTriangle className="w-4 h-4"/> Reportar Mantenimiento</>}
+                {isOperativo ? <><CheckCircle className="w-5 h-5"/> Inspección Visual</> : <><AlertTriangle className="w-5 h-5"/> Mantenimiento</>}
               </button>
             </div>
             
-            <div className="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-400 flex flex-col gap-1.5">
-              <p>Última actualización: {new Date().toISOString().split('T')[0]}</p>
+            <div className="mt-6 text-xs font-mono text-obys-text/40 tracking-widest uppercase">
+              Actualizado: {new Date().toISOString().split('T')[0]}
             </div>
           </div>
         </div>
@@ -115,8 +118,10 @@ export default async function NodeDetailsPage({ params }: { params: Promise<{ id
 
       {/* Related Nodes */}
       {relatedNodes.length > 0 && (
-        <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 mt-8 border-t border-slate-200">
-          <ProductGrid title="Más vehículos en esta ubicación" products={relatedNodes} />
+        <div className="border-t border-obys-border">
+          <div className="max-w-[90%] mx-auto py-24">
+            <ProductGrid title="Más vehículos en esta ubicación" products={relatedNodes} />
+          </div>
         </div>
       )}
     </div>

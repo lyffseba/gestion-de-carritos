@@ -13,7 +13,7 @@ export function ProductCard({ product }: { product: Product }) {
     <div className="group flex flex-col border border-obys-border p-6 hover:bg-black/5 transition-all duration-300 font-sans h-full">
       
       {/* Visual Telemetry */}
-      <Link href={`/product/${product.id}`} className="block relative aspect-square bg-obys-bg/50 border border-obys-border mb-8 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
+      <Link href={`/product/${product.id}`} className="block relative aspect-square bg-obys-bg/50 border border-obys-border mb-8 overflow-hidden transition-all duration-700">
         {!isOperativo && (
           <div className="absolute top-4 left-4 z-20 bg-obys-accent text-obys-bg text-xs font-medium uppercase tracking-widest px-3 py-1">
             Mantenimiento
