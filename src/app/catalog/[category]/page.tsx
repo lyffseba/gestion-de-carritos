@@ -8,7 +8,7 @@ const normalize = (str: string) =>
 
 export function generateStaticParams() {
   const categories = Array.from(new Set(MOCK_PRODUCTS.map((p) => normalize(p.category))));
-  return [...categories.map((c) => ({ category: c })), { category: 'mantenimiento' }, { category: 'recolecciones' }, { category: 'el-ensueno' }, { category: 'milenio-plaza' }, { category: 'mercurio' }, { category: 'el-porvenir' }, { category: 'ventura' }];
+  return [...categories.map((c) => ({ category: c })), { category: 'mantenimiento' }, { category: 'recolecciones' }, { category: 'milenio-plaza' }, { category: 'mercurio' }, { category: 'el-porvenir' }];
 }
 
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
@@ -25,16 +25,14 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   } else if (normalizedCategory === 'recolecciones') {
     filteredNodes = MOCK_PRODUCTS.filter((p) => (p.coins || 0) > 100);
     sectorName = 'Recolecciones (Monedas Altas)';
-  } else if (['milenio-plaza', 'el-ensueno', 'mercurio', 'el-porvenir', 'ventura'].includes(normalizedCategory)) {
+  } else if (['milenio-plaza', 'mercurio', 'el-porvenir'].includes(normalizedCategory)) {
     const formattedCategoryMap: Record<string, string> = {
       'milenio-plaza': 'Milenio Plaza',
-      'el-ensueno': 'El Ensueño',
       'mercurio': 'Mercurio',
-      'el-porvenir': 'Mi Centro El Porvenir',
-      'ventura': 'Ventura'
+      'el-porvenir': 'Mi Centro El Porvenir'
     };
     const exactName = formattedCategoryMap[normalizedCategory];
-    sectorName = exactName;
+    sectorName = exactName || decodedCategory;
     filteredNodes = MOCK_PRODUCTS.filter((p) => p.category === exactName);
   } else {
     filteredNodes = MOCK_PRODUCTS.filter(
@@ -42,47 +40,51 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
     );
   }
 
-  if (filteredNodes.length === 0 && !['mantenimiento', 'recolecciones', 'el-ensueno', 'milenio-plaza', 'mercurio', 'el-porvenir', 'ventura'].includes(normalizedCategory)) {
+  if (filteredNodes.length === 0 && !['mantenimiento', 'recolecciones', 'milenio-plaza', 'mercurio', 'el-porvenir'].includes(normalizedCategory)) {
     notFound();
   }
 
+  const activeNodes = filteredNodes.filter(p => p.status === 'Operativo').length;
+  const maintenanceNodes = filteredNodes.filter(p => p.status !== 'Operativo').length;
+
   return (
-    <div className="font-sans text-slate-700 min-h-screen pb-20 bg-white">
-      {/* Sector Console Header */}
-      <div className="border-b border-slate-200 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-start md:items-center text-sm md:text-base gap-4">
-          
-          <div className="flex items-center gap-4">
-            <div className="bg-slate-100 p-3 rounded-xl border border-slate-200">
-              <MapPin className="w-6 h-6 text-slate-500" />
-            </div>
-            <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight capitalize">
+    <div className="font-sans min-h-screen bg-obys-bg text-obys-text">
+      <div className="relative w-full border-b border-obys-border pt-16 pb-24 md:pt-32 md:pb-40">
+        <div className="max-w-[90%] mx-auto">
+          <div className="flex flex-col md:flex-row items-end justify-between gap-12">
+            <div className="max-w-4xl">
+              <h1 className="text-5xl md:text-8xl font-medium tracking-tighter uppercase leading-[0.85] mb-8 text-obys-text break-words">
                 {sectorName}
               </h1>
-              <p className="text-slate-400 mt-1 flex items-center gap-2">
-                {filteredNodes.length} vehículos detectados
+              <p className="text-obys-text/70 mt-3 text-lg md:text-2xl font-medium leading-snug max-w-2xl">
+                Catálogo filtrado de la flota en esta ubicación o categoría específica.
               </p>
             </div>
-          </div>
-
-          <div className="flex gap-4 md:gap-6 items-center">
-            <button className="flex items-center gap-2 px-4 py-2 border border-slate-200 rounded-lg hover:bg-slate-100 transition-colors text-slate-900 font-medium">
-              <Filter className="w-4 h-4" /> Filtros
-            </button>
+            
+            <div className="flex flex-col sm:flex-row gap-8 items-end md:items-center text-sm font-medium uppercase tracking-widest text-obys-text/60">
+              <div className="flex items-center gap-3">
+                <span className="w-3 h-3 rounded-full bg-obys-text"></span>
+                {activeNodes} Operativos
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="w-3 h-3 rounded-full bg-obys-accent"></span>
+                {maintenanceNodes} Revisión
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      
-      {/* Sector Telemetry Grid */}
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-10">
+
+      <div className="max-w-[90%] mx-auto py-24">
         {filteredNodes.length > 0 ? (
           <ProductGrid products={filteredNodes} />
         ) : (
-          <div className="flex flex-col items-center justify-center py-20 text-center bg-white shadow-sm border border-slate-200 rounded-xl mt-10">
-            <CheckCircle className="w-12 h-12 text-slate-400 mb-4" />
-            <h3 className="text-base font-bold text-slate-700">No hay vehículos en esta sección</h3>
-            <p className="text-slate-400 mt-2">La ubicación está registrada pero no cuenta con unidades activas.</p>
+          <div className="flex flex-col items-center justify-center py-32 text-center border border-obys-border p-8 hover:bg-black/5 transition-colors">
+            <CheckCircle className="w-16 h-16 text-obys-text/40 mb-8" />
+            <h3 className="text-3xl font-medium uppercase tracking-tighter text-obys-text mb-4">Sin vehículos</h3>
+            <p className="text-lg font-medium text-obys-text/60 max-w-md mx-auto leading-snug">
+              No hay carritos registrados en esta categoría o ubicación por el momento.
+            </p>
           </div>
         )}
       </div>

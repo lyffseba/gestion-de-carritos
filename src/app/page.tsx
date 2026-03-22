@@ -95,9 +95,7 @@ export default function Home() {
               { id: 'milenio-plaza', name: 'Milenio Plaza' },
               { id: 'el-porvenir', name: 'Mi Centro El Porvenir' },
               { id: 'mercurio', name: 'Mercurio' },
-              { id: 'el-ensueno', name: 'El Ensueño' },
-              { id: 'ventura', name: 'Ventura' }
-            ].map((node, i) => (
+                                        ].map((node, i) => (
               <Link key={node.id} href={`/catalog/${node.id}`} className="group block border border-obys-border p-8 hover:bg-obys-text transition-all duration-300">
                 <div className="flex justify-between items-start mb-16">
                   <span className="text-xs font-mono text-obys-text/50 group-hover:text-obys-bg/50">0{i+1}</span>

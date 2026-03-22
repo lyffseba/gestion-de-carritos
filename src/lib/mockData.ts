@@ -114,16 +114,6 @@ export const MOCK_PRODUCTS: Product[] = [
     coins: 145,
   },
   {
-    id: '2',
-    name: 'Tren Safari (Verde)',
-    description: 'Ubicación: Gran Plaza El Ensueño. Requiere revisión de monedero.',
-    price: 2000,
-    category: 'El Ensueño',
-    imageUrl: '/images/tren-safari.png',
-    status: 'Revisión',
-    coins: 89,
-  },
-  {
     id: '3',
     name: 'Caballito Pony (Rosa)',
     description: 'Ubicación: Mercurio Soacha. Mantenimiento reciente.',

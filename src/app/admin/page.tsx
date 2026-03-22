@@ -82,11 +82,9 @@ export default async function AdminDashboard({
                   className="w-full border border-slate-200 bg-slate-50 rounded-lg px-3 py-2.5 text-slate-900 focus:outline-none focus:border-blue-500 transition-colors"
                 >
                   <option value="Milenio Plaza">Milenio Plaza</option>
-                  <option value="El Ensueño">El Ensueño</option>
-                  <option value="Mercurio">Mercurio</option>
+                                    <option value="Mercurio">Mercurio</option>
                   <option value="Mi Centro El Porvenir">Mi Centro El Porvenir</option>
-                  <option value="Ventura">Ventura</option>
-                </select>
+                                  </select>
               </div>
 
               <div className="grid grid-cols-2 gap-4">

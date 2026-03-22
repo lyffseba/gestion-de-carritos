@@ -24,9 +24,7 @@ export default function Footer() {
               <li><Link href="/catalog/milenio-plaza" className="hover:text-obys-accent transition-colors group flex items-center gap-2">Milenio Plaza <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" /></Link></li>
               <li><Link href="/catalog/el-porvenir" className="hover:text-obys-accent transition-colors group flex items-center gap-2">El Porvenir <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" /></Link></li>
               <li><Link href="/catalog/mercurio" className="hover:text-obys-accent transition-colors group flex items-center gap-2">Mercurio <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" /></Link></li>
-              <li><Link href="/catalog/el-ensueno" className="hover:text-obys-accent transition-colors group flex items-center gap-2">El Ensueño <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" /></Link></li>
-              <li><Link href="/catalog/ventura" className="hover:text-obys-accent transition-colors group flex items-center gap-2">Ventura <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" /></Link></li>
-            </ul>
+                                        </ul>
           </div>
           
           <div className="lg:col-span-3">
