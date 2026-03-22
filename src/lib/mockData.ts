@@ -14,6 +14,26 @@ export type Product = {
 // Data based on Kids Rides (Carritos)
 export const MOCK_PRODUCTS: Product[] = [
   {
+    id: '8',
+    name: 'Jeep Safari (Verde)',
+    description: 'Ubicación: Mercurio Soacha. Operativo y funcionando bien.',
+    price: 2000,
+    category: 'Mercurio',
+    imageUrl: '/images/mercurio-jeep.jpg',
+    status: 'Operativo',
+    coins: 450,
+  },
+  {
+    id: '9',
+    name: 'Moto Chopper (Negra con Llamas)',
+    description: 'Ubicación: Mercurio Soacha. Mantenimiento al día.',
+    price: 2000,
+    category: 'Mercurio',
+    imageUrl: '/images/mercurio-moto.jpg',
+    status: 'Operativo',
+    coins: 290,
+  },
+  {
     id: '6',
     name: 'Rayo McQueen (Rojo)',
     description: 'Ubicación: Mi Centro El Porvenir. Mantenimiento al día.',
