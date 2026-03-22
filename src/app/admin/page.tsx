@@ -59,16 +59,16 @@ export default async function AdminDashboard({
   };
 
   return (
-    <div className="container mx-auto px-4 py-12 max-w-7xl font-sans text-neutral-300">
-      <div className="flex justify-between items-center mb-8 border-b border-neutral-800 pb-4">
+    <div className="container mx-auto px-4 py-12 max-w-7xl font-sans text-slate-700">
+      <div className="flex justify-between items-center mb-8 border-b border-slate-200 pb-4">
         <div>
-          <h1 className="text-3xl font-bold text-white flex items-center gap-3 tracking-tight">
-            <div className="bg-neutral-900 p-2 rounded-lg border border-neutral-800">
-              <Settings className="w-5 h-5 text-white" />
+          <h1 className="text-3xl font-bold text-slate-900 flex items-center gap-3 tracking-tight">
+            <div className="bg-slate-100 p-2 rounded-lg border border-slate-200">
+              <Settings className="w-5 h-5 text-slate-900" />
             </div>
             Panel de Administración
           </h1>
-          <p className="text-neutral-500 mt-2 text-sm">Gestión de inventario y alta de nuevos vehículos.</p>
+          <p className="text-slate-400 mt-2 text-sm">Gestión de inventario y alta de nuevos vehículos.</p>
         </div>
       </div>
 
@@ -87,30 +87,30 @@ export default async function AdminDashboard({
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Form Column */}
         <div className="lg:col-span-1">
-          <div className="bg-[#111111] border border-neutral-800 rounded-xl p-6">
-            <h2 className="text-lg font-bold mb-6 border-b border-neutral-800 pb-3 text-white">
+          <div className="bg-white shadow-sm border border-slate-200 rounded-xl p-6">
+            <h2 className="text-lg font-bold mb-6 border-b border-slate-200 pb-3 text-slate-900">
               Añadir Nuevo Vehículo
             </h2>
             
             <form action={addProductAction} className="space-y-4 text-sm font-medium">
               <div>
-                <label htmlFor="name" className="block text-neutral-400 mb-1.5">Nombre (Vehículo)</label>
+                <label htmlFor="name" className="block text-slate-500 mb-1.5">Nombre (Vehículo)</label>
                 <input 
                   type="text" 
                   name="name" 
                   id="name" 
                   required 
-                  className="w-full border border-neutral-700 bg-[#0a0a0a] rounded-lg px-3 py-2.5 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full border border-slate-200 bg-slate-50 rounded-lg px-3 py-2.5 text-slate-900 focus:outline-none focus:border-blue-500 transition-colors"
                   placeholder="ej. Tren Safari (Verde)"
                 />
               </div>
 
               <div>
-                <label htmlFor="category" className="block text-neutral-400 mb-1.5">Ubicación Asignada</label>
+                <label htmlFor="category" className="block text-slate-500 mb-1.5">Ubicación Asignada</label>
                 <select 
                   name="category" 
                   id="category" 
-                  className="w-full border border-neutral-700 bg-[#0a0a0a] rounded-lg px-3 py-2.5 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full border border-slate-200 bg-slate-50 rounded-lg px-3 py-2.5 text-slate-900 focus:outline-none focus:border-blue-500 transition-colors"
                 >
                   <option value="Milenio Plaza">Milenio Plaza</option>
                   <option value="El Ensueño">El Ensueño</option>
@@ -122,14 +122,14 @@ export default async function AdminDashboard({
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="price" className="block text-neutral-400 mb-1.5">Tarifa (COP)</label>
+                  <label htmlFor="price" className="block text-slate-500 mb-1.5">Tarifa (COP)</label>
                   <input 
                     type="number" 
                     name="price" 
                     id="price" 
                     defaultValue="2000"
                     required 
-                    className="w-full border border-neutral-700 bg-[#0a0a0a] rounded-lg px-3 py-2.5 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                    className="w-full border border-slate-200 bg-slate-50 rounded-lg px-3 py-2.5 text-slate-900 focus:outline-none focus:border-blue-500 transition-colors"
                   />
                 </div>
                 <div>
@@ -140,36 +140,36 @@ export default async function AdminDashboard({
                     id="coins" 
                     defaultValue="0"
                     required 
-                    className="w-full border border-neutral-700 bg-[#0a0a0a] rounded-lg px-3 py-2.5 text-white focus:outline-none focus:border-brand-secondary transition-colors"
+                    className="w-full border border-slate-200 bg-slate-50 rounded-lg px-3 py-2.5 text-slate-900 focus:outline-none focus:border-brand-secondary transition-colors"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="imageUrl" className="block text-neutral-400 mb-1.5">URL de la Foto</label>
+                <label htmlFor="imageUrl" className="block text-slate-500 mb-1.5">URL de la Foto</label>
                 <input 
                   type="url" 
                   name="imageUrl" 
                   id="imageUrl" 
                   required 
-                  className="w-full border border-neutral-700 bg-[#0a0a0a] rounded-lg px-3 py-2.5 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full border border-slate-200 bg-slate-50 rounded-lg px-3 py-2.5 text-slate-900 focus:outline-none focus:border-blue-500 transition-colors"
                   placeholder="https://..."
                 />
               </div>
 
               <div>
-                <label htmlFor="description" className="block text-neutral-400 mb-1.5">Detalles / Mantenimiento</label>
+                <label htmlFor="description" className="block text-slate-500 mb-1.5">Detalles / Mantenimiento</label>
                 <textarea 
                   name="description" 
                   id="description" 
                   rows={3} 
                   required 
-                  className="w-full border border-neutral-700 bg-[#0a0a0a] rounded-lg px-3 py-2.5 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full border border-slate-200 bg-slate-50 rounded-lg px-3 py-2.5 text-slate-900 focus:outline-none focus:border-blue-500 transition-colors"
                   placeholder="Observaciones..."
                 />
               </div>
 
-              <Button type="submit" className="w-full bg-white hover:bg-neutral-200 text-black border-transparent font-medium mt-6 py-2.5 rounded-lg">
+              <Button type="submit" className="w-full bg-white hover:bg-indigo-700 text-black border-transparent font-medium mt-6 py-2.5 rounded-lg">
                 Registrar Vehículo
               </Button>
             </form>
@@ -178,13 +178,13 @@ export default async function AdminDashboard({
 
         {/* Database View Column */}
         <div className="lg:col-span-2">
-          <div className="bg-[#111111] border border-neutral-800 rounded-xl p-6">
-            <h2 className="text-lg font-bold mb-6 border-b border-neutral-800 pb-3 text-white">
+          <div className="bg-white shadow-sm border border-slate-200 rounded-xl p-6">
+            <h2 className="text-lg font-bold mb-6 border-b border-slate-200 pb-3 text-slate-900">
               Inventario Activo ({liveProducts.length})
             </h2>
             
             {liveProducts.length === 0 && !dbError ? (
-              <div className="text-center py-16 text-neutral-500 bg-[#0a0a0a] rounded-xl border border-neutral-800 border-dashed text-sm">
+              <div className="text-center py-16 text-slate-400 bg-slate-50 rounded-xl border border-slate-200 border-dashed text-sm">
                 No hay vehículos registrados en la base de datos.
                 <br />
                 Añade el primer registro usando el formulario.
@@ -192,7 +192,7 @@ export default async function AdminDashboard({
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full text-sm text-left border-collapse">
-                  <thead className="text-xs text-neutral-400 uppercase bg-[#0a0a0a] border-b border-neutral-800">
+                  <thead className="text-xs text-slate-500 uppercase bg-slate-50 border-b border-slate-200">
                     <tr>
                       <th className="px-4 py-3 font-medium">Vehículo</th>
                       <th className="px-4 py-3 font-medium">Ubicación</th>
@@ -203,15 +203,15 @@ export default async function AdminDashboard({
                   </thead>
                   <tbody>
                     {liveProducts.map((p) => (
-                      <tr key={p._id} className="border-b border-neutral-800 last:border-0 hover:bg-[#0a0a0a] transition-colors">
-                        <td className="px-4 py-4 font-medium text-white flex items-center gap-3">
-                          <img src={p.imageUrl || ''} alt="" className="w-10 h-10 object-cover rounded-md border border-neutral-800" />
+                      <tr key={p._id} className="border-b border-slate-200 last:border-0 hover:bg-slate-50 transition-colors">
+                        <td className="px-4 py-4 font-medium text-slate-900 flex items-center gap-3">
+                          <img src={p.imageUrl || ''} alt="" className="w-10 h-10 object-cover rounded-md border border-slate-200" />
                           <div>
                             <div className="font-semibold line-clamp-1">{p.name}</div>
-                            <div className="text-xs text-neutral-500 font-normal line-clamp-1 max-w-[150px]">{p.description}</div>
+                            <div className="text-xs text-slate-400 font-normal line-clamp-1 max-w-[150px]">{p.description}</div>
                           </div>
                         </td>
-                        <td className="px-4 py-4 text-neutral-400 text-sm">{p.category}</td>
+                        <td className="px-4 py-4 text-slate-500 text-sm">{p.category}</td>
                         <td className="px-4 py-4">
                           <span className={`text-xs font-semibold px-2 py-1 rounded-md ${
                             p.status === 'Operativo' ? 'bg-[#50e3c2]/10 text-[#50e3c2]' : 'bg-red-500/10 text-red-500'
@@ -220,7 +220,7 @@ export default async function AdminDashboard({
                           </span>
                         </td>
                         <td className="px-4 py-4 font-bold text-brand-secondary text-sm">{p.coins}</td>
-                        <td className="px-4 py-4 text-neutral-500 text-sm">{formatPrice(p.price)}</td>
+                        <td className="px-4 py-4 text-slate-400 text-sm">{formatPrice(p.price)}</td>
                       </tr>
                     ))}
                   </tbody>

@@ -47,27 +47,27 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   }
 
   return (
-    <div className="font-sans text-neutral-300 min-h-screen pb-20 bg-brand-dark">
+    <div className="font-sans text-slate-700 min-h-screen pb-20 bg-white">
       {/* Sector Console Header */}
-      <div className="border-b border-neutral-800 bg-[#0a0a0a]">
+      <div className="border-b border-slate-200 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-start md:items-center text-sm md:text-base gap-4">
           
           <div className="flex items-center gap-4">
-            <div className="bg-neutral-900 p-3 rounded-xl border border-neutral-800">
-              <MapPin className="w-6 h-6 text-neutral-400" />
+            <div className="bg-slate-100 p-3 rounded-xl border border-slate-200">
+              <MapPin className="w-6 h-6 text-slate-500" />
             </div>
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-white tracking-tight capitalize">
+              <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight capitalize">
                 {sectorName}
               </h1>
-              <p className="text-neutral-500 mt-1 flex items-center gap-2">
+              <p className="text-slate-400 mt-1 flex items-center gap-2">
                 {filteredNodes.length} vehículos detectados
               </p>
             </div>
           </div>
 
           <div className="flex gap-4 md:gap-6 items-center">
-            <button className="flex items-center gap-2 px-4 py-2 border border-neutral-800 rounded-lg hover:bg-neutral-900 transition-colors text-white font-medium">
+            <button className="flex items-center gap-2 px-4 py-2 border border-slate-200 rounded-lg hover:bg-slate-100 transition-colors text-slate-900 font-medium">
               <Filter className="w-4 h-4" /> Filtros
             </button>
           </div>
@@ -79,10 +79,10 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
         {filteredNodes.length > 0 ? (
           <ProductGrid products={filteredNodes} />
         ) : (
-          <div className="flex flex-col items-center justify-center py-20 text-center bg-[#111111] border border-neutral-800 rounded-xl mt-10">
-            <CheckCircle className="w-12 h-12 text-neutral-600 mb-4" />
-            <h3 className="text-base font-bold text-neutral-300">No hay vehículos en esta sección</h3>
-            <p className="text-neutral-500 mt-2">La ubicación está registrada pero no cuenta con unidades activas.</p>
+          <div className="flex flex-col items-center justify-center py-20 text-center bg-white shadow-sm border border-slate-200 rounded-xl mt-10">
+            <CheckCircle className="w-12 h-12 text-slate-400 mb-4" />
+            <h3 className="text-base font-bold text-slate-700">No hay vehículos en esta sección</h3>
+            <p className="text-slate-400 mt-2">La ubicación está registrada pero no cuenta con unidades activas.</p>
           </div>
         )}
       </div>

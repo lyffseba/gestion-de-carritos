@@ -1,26 +1,14 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Brand Primary Colors (Sober Dark Mode - Vercel/Linear style) */
-  --color-brand-dark: #000000;
+  /* Brand Primary Colors (Modern Light Control Panel Theme) */
+  --color-brand-dark: #f8fafc; /* slate-50 */
   --color-brand-light: #ffffff;
-  --color-brand-primary: #ffffff; /* Clean white for primary accents */
+  --color-brand-primary: #4f46e5; /* indigo-600 */
   --color-brand-secondary: #f5a623; /* Subtle gold for coins */
   --color-brand-accent: #3291ff; /* Vercel blue */
-  --color-brand-grayBg: #0a0a0a;
-  --color-brand-borderGray: #333333;
-
-  /* Neutral Scale */
-  --color-neutral-50: #fafafa;
-  --color-neutral-100: #eaeaea;
-  --color-neutral-200: #999999;
-  --color-neutral-300: #888888;
-  --color-neutral-400: #666666;
-  --color-neutral-500: #444444;
-  --color-neutral-600: #333333;
-  --color-neutral-700: #222222;
-  --color-neutral-800: #111111;
-  --color-neutral-900: #000000;
+  --color-brand-grayBg: #f1f5f9; /* slate-100 */
+  --color-brand-borderGray: #e2e8f0; /* slate-200 */
 
   /* Typography */
   --font-sans: var(--font-geist-sans), Inter, Arial, sans-serif;
@@ -29,7 +17,7 @@
 
 :root {
   --background: var(--color-brand-dark);
-  --foreground: var(--color-neutral-100);
+  --foreground: #0f172a; /* slate-900 */
 }
 
 body {
@@ -40,11 +28,11 @@ body {
 
 /* Subtle border for cards */
 .card-border {
-  border: 1px solid var(--color-neutral-700);
+  border: 1px solid var(--color-brand-borderGray);
 }
 
 .status-dot-green {
-  background-color: #50e3c2;
+  background-color: #10b981; /* emerald-500 */
 }
 
 .status-dot-yellow {
@@ -52,5 +40,5 @@ body {
 }
 
 .status-dot-red {
-  background-color: #ff0000;
+  background-color: #ef4444; /* red-500 */
 }

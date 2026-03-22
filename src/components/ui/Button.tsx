@@ -17,9 +17,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     
     // Variant styles
     if (variant === 'default') {
-      classes += 'bg-primary-500 text-white shadow hover:bg-primary-700 ';
+      classes += 'bg-primary-500 text-slate-900 shadow hover:bg-primary-700 ';
     } else if (variant === 'accent') {
-      classes += 'bg-accent-500 text-white shadow-sm hover:bg-accent-500/90 ';
+      classes += 'bg-accent-500 text-slate-900 shadow-sm hover:bg-accent-500/90 ';
     } else if (variant === 'outline') {
       classes += 'border border-neutral-200 bg-transparent shadow-sm hover:bg-neutral-100 hover:text-neutral-900 ';
     } else if (variant === 'ghost') {

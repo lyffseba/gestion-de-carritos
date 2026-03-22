@@ -26,16 +26,16 @@ export default async function NodeDetailsPage({ params }: { params: Promise<{ id
   const shortId = node.id.slice(0, 6).toUpperCase();
 
   return (
-    <div className="font-sans text-neutral-300 min-h-screen pb-20 bg-brand-dark">
+    <div className="font-sans text-slate-700 min-h-screen pb-20 bg-white">
       
       {/* Node Header */}
-      <div className="border-b border-neutral-800 bg-[#0a0a0a] py-6">
+      <div className="border-b border-slate-200 bg-slate-50 py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <div className="bg-neutral-900 p-2 rounded-lg border border-neutral-800">
-              <Car className="text-white w-5 h-5" />
+            <div className="bg-slate-100 p-2 rounded-lg border border-slate-200">
+              <Car className="text-slate-900 w-5 h-5" />
             </div>
-            <h1 className="text-white font-bold tracking-tight text-xl md:text-2xl">
+            <h1 className="text-slate-900 font-bold tracking-tight text-xl md:text-2xl">
               Unidad #{shortId}
             </h1>
           </div>
@@ -51,7 +51,7 @@ export default async function NodeDetailsPage({ params }: { params: Promise<{ id
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           
           {/* Feed Display (Image) */}
-          <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#111] border border-neutral-800 rounded-2xl group">
+          <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-50 border border-slate-200 rounded-2xl group">
             <Image
               src={node.imageUrl}
               alt={node.name}
@@ -64,34 +64,34 @@ export default async function NodeDetailsPage({ params }: { params: Promise<{ id
           {/* Node Diagnostics */}
           <div className="flex flex-col gap-6">
             <div>
-              <h2 className="text-3xl font-bold text-white tracking-tight mb-2">{node.name}</h2>
-              <p className="text-sm text-neutral-500 flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-neutral-400" /> Ubicación: {node.category}
+              <h2 className="text-3xl font-bold text-slate-900 tracking-tight mb-2">{node.name}</h2>
+              <p className="text-sm text-slate-400 flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-slate-500" /> Ubicación: {node.category}
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-[#111111] border border-neutral-800 p-5 rounded-xl">
-                <p className="text-xs text-neutral-500 mb-2 font-medium">
+              <div className="bg-white shadow-sm border border-slate-200 p-5 rounded-xl">
+                <p className="text-xs text-slate-400 mb-2 font-medium">
                   CAJA DE MONEDAS
                 </p>
                 <p className="text-3xl font-bold text-brand-secondary">
                   🪙 {node.coins || 0}
                 </p>
               </div>
-              <div className="bg-[#111111] border border-neutral-800 p-5 rounded-xl">
-                <p className="text-xs text-neutral-500 mb-2 font-medium flex items-center gap-1">
+              <div className="bg-white shadow-sm border border-slate-200 p-5 rounded-xl">
+                <p className="text-xs text-slate-400 mb-2 font-medium flex items-center gap-1">
                   <Activity className="w-3 h-3" /> TARIFA (COP)
                 </p>
-                <p className="text-3xl font-bold text-white">
+                <p className="text-3xl font-bold text-slate-900">
                   ${node.price}
                 </p>
               </div>
             </div>
 
-            <div className="bg-[#111] border border-neutral-800 p-5 rounded-xl text-sm">
-              <p className="text-neutral-400 mb-2 font-medium">Notas y detalles:</p>
-              <p className="text-neutral-300 leading-relaxed">
+            <div className="bg-slate-50 border border-slate-200 p-5 rounded-xl text-sm">
+              <p className="text-slate-500 mb-2 font-medium">Notas y detalles:</p>
+              <p className="text-slate-700 leading-relaxed">
                 {node.description}
               </p>
             </div>
@@ -106,7 +106,7 @@ export default async function NodeDetailsPage({ params }: { params: Promise<{ id
               </button>
             </div>
             
-            <div className="mt-4 pt-4 border-t border-neutral-800 text-xs text-neutral-500 flex flex-col gap-1.5">
+            <div className="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-400 flex flex-col gap-1.5">
               <p>Última actualización: {new Date().toISOString().split('T')[0]}</p>
             </div>
           </div>
@@ -115,7 +115,7 @@ export default async function NodeDetailsPage({ params }: { params: Promise<{ id
 
       {/* Related Nodes */}
       {relatedNodes.length > 0 && (
-        <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 mt-8 border-t border-neutral-800">
+        <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 mt-8 border-t border-slate-200">
           <ProductGrid title="Más vehículos en esta ubicación" products={relatedNodes} />
         </div>
       )}

@@ -19,7 +19,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1, // Prevents iOS input zoom on forms
   userScalable: false,
-  themeColor: '#000000', // Ensures the iPhone 15 dynamic island/status bar blends perfectly
+  themeColor: '#f8fafc', // Ensures the iPhone 15 dynamic island/status bar blends perfectly
 };
 
 export const metadata: Metadata = {
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     title: 'Gestión de Carritos',
-    statusBarStyle: 'black-translucent',
+    statusBarStyle: 'default',
   },
   formatDetection: {
     telephone: false,

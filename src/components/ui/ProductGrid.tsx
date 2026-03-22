@@ -11,7 +11,7 @@ export function ProductGrid({
   return (
     <div className="w-full font-sans">
       {title && (
-        <h2 className="mb-6 text-xl font-bold tracking-tight text-white border-b border-neutral-800 pb-4 flex items-center gap-2">
+        <h2 className="mb-6 text-xl font-bold tracking-tight text-slate-900 border-b border-slate-200 pb-4 flex items-center gap-2">
           {title}
         </h2>
       )}
