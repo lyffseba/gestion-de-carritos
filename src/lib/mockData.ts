@@ -14,6 +14,36 @@ export type Product = {
 // Data based on Kids Rides (Carritos)
 export const MOCK_PRODUCTS: Product[] = [
   {
+    id: '12',
+    name: 'Avión Espacial (Azul/Blanco)',
+    description: 'Ubicación: Milenio Plaza. Lado derecho.',
+    price: 2000,
+    category: 'Milenio Plaza',
+    imageUrl: '/images/avion-azul-2.jpg',
+    status: 'Operativo',
+    coins: 100,
+  },
+  {
+    id: '13',
+    name: 'Avión Espacial (Azul/Blanco) - Frente',
+    description: 'Ubicación: Milenio Plaza. Vista frontal.',
+    price: 2000,
+    category: 'Milenio Plaza',
+    imageUrl: '/images/avion-azul-3.jpg',
+    status: 'Operativo',
+    coins: 50,
+  },
+  {
+    id: '14',
+    name: 'Moto 95 Binary Power (Azul/Amarillo)',
+    description: 'Ubicación: Milenio Plaza. Vista superior.',
+    price: 2000,
+    category: 'Milenio Plaza',
+    imageUrl: '/images/moto-n95-2.jpg',
+    status: 'Operativo',
+    coins: 230,
+  },
+  {
     id: '10',
     name: 'Rayo McQueen (Rojo) #1',
     description: 'Ubicación: Mercurio Soacha. Mantenimiento al día.',
@@ -102,15 +132,5 @@ export const MOCK_PRODUCTS: Product[] = [
     imageUrl: '/images/pony.png',
     status: 'Operativo',
     coins: 210,
-  },
-  {
-    id: '4',
-    name: 'Moto de Policía (Azul)',
-    description: 'Ubicación: Ventura Terreros. Última recolección: hace 2 días.',
-    price: 2000,
-    category: 'Ventura',
-    imageUrl: '/images/moto-policia.png',
-    status: 'Operativo',
-    coins: 45,
   }
 ];
