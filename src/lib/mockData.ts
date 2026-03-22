@@ -14,6 +14,26 @@ export type Product = {
 // Data based on Kids Rides (Carritos)
 export const MOCK_PRODUCTS: Product[] = [
   {
+    id: '6',
+    name: 'Rayo McQueen (Rojo)',
+    description: 'Ubicación: Mi Centro El Porvenir. Mantenimiento al día.',
+    price: 2000,
+    category: 'Mi Centro El Porvenir',
+    imageUrl: '/images/porvenir-coche.jpg',
+    status: 'Operativo',
+    coins: 340,
+  },
+  {
+    id: '7',
+    name: 'Helicóptero Espacial (Azul)',
+    description: 'Ubicación: Mi Centro El Porvenir. En perfecto estado.',
+    price: 2000,
+    category: 'Mi Centro El Porvenir',
+    imageUrl: '/images/porvenir-heli.jpg',
+    status: 'Operativo',
+    coins: 215,
+  },
+  {
     id: '1',
     name: 'Carrito de Bomberos (Rojo)',
     description: 'Ubicación: Centro Comercial Milenio Plaza. Mantenimiento al día.',
@@ -52,15 +72,5 @@ export const MOCK_PRODUCTS: Product[] = [
     imageUrl: '/images/moto-policia.png',
     status: 'Operativo',
     coins: 45,
-  },
-  {
-    id: '5',
-    name: 'Helicóptero Rescate',
-    description: 'Ubicación: Milenio Plaza. Llantas cambiadas recientemente.',
-    price: 2000,
-    category: 'Milenio Plaza',
-    imageUrl: 'https://images.unsplash.com/photo-1517420879524-86d64ac2f339?auto=format&fit=crop&q=80&w=800',
-    status: 'Operativo',
-    coins: 180,
   }
 ];
