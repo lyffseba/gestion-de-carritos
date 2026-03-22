@@ -1,5 +1,6 @@
 import { addProductAction } from './actions';
-import { MOCK_PRODUCTS } from '@/lib/mockData';
+import { connectDB } from '@/db';
+import { Product } from '@/db/models/Product';
 import { Button } from '@/components/ui/Button';
 import { Settings } from 'lucide-react';
 
@@ -12,17 +13,42 @@ export default async function AdminDashboard({
 }) {
   const { success } = await searchParams;
   
-  const liveProducts = MOCK_PRODUCTS.map(p => ({
-    _id: p.id,
-    name: p.name,
-    description: p.description,
-    price: p.price,
-    category: p.category,
-    imageUrl: p.imageUrl,
-    status: p.status || 'Desconocido',
-    coins: p.coins || 0,
-    createdAt: new Date(),
-  }));
+  let liveProducts: Array<{
+    _id: string;
+    name: string;
+    description: string;
+    price: number;
+    category: string;
+    imageUrl: string;
+    status: string;
+    coins: number;
+    createdAt: Date;
+  }> = [];
+  let dbError = null;
+  
+  try {
+    await connectDB();
+    const docs = await Product.find({}).sort({ createdAt: -1 }).limit(20).lean();
+    liveProducts = docs.map((doc: unknown) => {
+      const d = doc as {
+        _id: { toString: () => string };
+        name: string;
+        description: string;
+        price: number;
+        category: string;
+        imageUrl: string;
+        status: string;
+        coins: number;
+        createdAt: Date;
+      };
+      return {
+        ...d,
+        _id: d._id.toString(),
+      };
+    });
+  } catch (error: unknown) {
+    dbError = error instanceof Error ? error.message : String(error);
+  }
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('es-CO', {
@@ -46,15 +72,20 @@ export default async function AdminDashboard({
         </div>
       </div>
 
-      {success && (
+      {dbError && (
+        <div className="bg-red-500/10 border border-red-500/50 text-red-500 rounded-lg p-4 mb-8 text-sm">
+          <strong>Error de conexión:</strong> {dbError}
+        </div>
+      )}
+
+      {success === 'true' && (
         <div className="bg-[#50e3c2]/10 border border-[#50e3c2]/30 text-[#50e3c2] rounded-lg p-4 mb-8 text-sm font-medium">
-          ✅ Vehículo añadido exitosamente al inventario.
+          ¡Vehículo registrado exitosamente en la base de datos!
         </div>
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
-        {/* ADD NEW PRODUCT FORM */}
+        {/* Form Column */}
         <div className="lg:col-span-1">
           <div className="bg-white shadow-sm border border-slate-200 rounded-xl p-6">
             <h2 className="text-lg font-bold mb-6 border-b border-slate-200 pb-3 text-slate-900">
@@ -66,9 +97,9 @@ export default async function AdminDashboard({
                 <label htmlFor="name" className="block text-slate-500 mb-1.5">Nombre (Vehículo)</label>
                 <input 
                   type="text" 
-                  id="name" 
                   name="name" 
-                  required
+                  id="name" 
+                  required 
                   className="w-full border border-slate-200 bg-slate-50 rounded-lg px-3 py-2.5 text-slate-900 focus:outline-none focus:border-blue-500 transition-colors"
                   placeholder="ej. Tren Safari (Verde)"
                 />
@@ -78,7 +109,7 @@ export default async function AdminDashboard({
                 <label htmlFor="category" className="block text-slate-500 mb-1.5">Ubicación Asignada</label>
                 <select 
                   name="category" 
-                  id="category"
+                  id="category" 
                   className="w-full border border-slate-200 bg-slate-50 rounded-lg px-3 py-2.5 text-slate-900 focus:outline-none focus:border-blue-500 transition-colors"
                 >
                   <option value="Milenio Plaza">Milenio Plaza</option>
@@ -94,10 +125,10 @@ export default async function AdminDashboard({
                   <label htmlFor="price" className="block text-slate-500 mb-1.5">Tarifa (COP)</label>
                   <input 
                     type="number" 
-                    id="price" 
                     name="price" 
+                    id="price" 
                     defaultValue="2000"
-                    required
+                    required 
                     className="w-full border border-slate-200 bg-slate-50 rounded-lg px-3 py-2.5 text-slate-900 focus:outline-none focus:border-blue-500 transition-colors"
                   />
                 </div>
@@ -105,10 +136,10 @@ export default async function AdminDashboard({
                   <label htmlFor="coins" className="block text-brand-secondary mb-1.5">🪙 Monedas</label>
                   <input 
                     type="number" 
-                    id="coins" 
                     name="coins" 
+                    id="coins" 
                     defaultValue="0"
-                    required
+                    required 
                     className="w-full border border-slate-200 bg-slate-50 rounded-lg px-3 py-2.5 text-slate-900 focus:outline-none focus:border-brand-secondary transition-colors"
                   />
                 </div>
@@ -118,9 +149,9 @@ export default async function AdminDashboard({
                 <label htmlFor="imageUrl" className="block text-slate-500 mb-1.5">URL de la Foto</label>
                 <input 
                   type="url" 
-                  id="imageUrl" 
                   name="imageUrl" 
-                  required
+                  id="imageUrl" 
+                  required 
                   className="w-full border border-slate-200 bg-slate-50 rounded-lg px-3 py-2.5 text-slate-900 focus:outline-none focus:border-blue-500 transition-colors"
                   placeholder="https://..."
                 />
@@ -131,11 +162,11 @@ export default async function AdminDashboard({
                 <textarea 
                   name="description" 
                   id="description" 
-                  rows={3}
-                  required
+                  rows={3} 
+                  required 
                   className="w-full border border-slate-200 bg-slate-50 rounded-lg px-3 py-2.5 text-slate-900 focus:outline-none focus:border-blue-500 transition-colors"
                   placeholder="Observaciones..."
-                ></textarea>
+                />
               </div>
 
               <Button type="submit" className="w-full bg-white hover:bg-indigo-700 text-black border-transparent font-medium mt-6 py-2.5 rounded-lg">
@@ -145,57 +176,59 @@ export default async function AdminDashboard({
           </div>
         </div>
 
-        {/* INVENTORY TABLE */}
+        {/* Database View Column */}
         <div className="lg:col-span-2">
           <div className="bg-white shadow-sm border border-slate-200 rounded-xl p-6">
             <h2 className="text-lg font-bold mb-6 border-b border-slate-200 pb-3 text-slate-900">
               Inventario Activo ({liveProducts.length})
             </h2>
-
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm text-left border-collapse">
-                <thead className="text-xs text-slate-500 uppercase bg-slate-50 border-b border-slate-200">
-                  <tr>
-                    <th className="px-4 py-3 font-medium">Vehículo</th>
-                    <th className="px-4 py-3 font-medium">Ubicación</th>
-                    <th className="px-4 py-3 font-medium">Estado</th>
-                    <th className="px-4 py-3 font-medium text-brand-secondary">Monedas</th>
-                    <th className="px-4 py-3 font-medium">Tarifa</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {liveProducts.map((p) => (
-                    <tr key={p._id} className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
-                      <td className="px-4 py-4 font-medium text-slate-900 flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-md bg-slate-100 border border-slate-200 overflow-hidden flex-shrink-0">
-                          <img src={p.imageUrl} alt={p.name} className="w-full h-full object-cover" />
-                        </div>
-                        <span className="line-clamp-1">{p.name}</span>
-                      </td>
-                      <td className="px-4 py-4 text-slate-500">
-                        {p.category}
-                      </td>
-                      <td className="px-4 py-4">
-                        <span className={`px-2.5 py-1 rounded-full text-xs font-medium border ${
+            
+            {liveProducts.length === 0 && !dbError ? (
+              <div className="text-center py-16 text-slate-400 bg-slate-50 rounded-xl border border-slate-200 border-dashed text-sm">
+                No hay vehículos registrados en la base de datos.
+                <br />
+                Añade el primer registro usando el formulario.
+              </div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-left border-collapse">
+                  <thead className="text-xs text-slate-500 uppercase bg-slate-50 border-b border-slate-200">
+                    <tr>
+                      <th className="px-4 py-3 font-medium">Vehículo</th>
+                      <th className="px-4 py-3 font-medium">Ubicación</th>
+                      <th className="px-4 py-3 font-medium">Estado</th>
+                      <th className="px-4 py-3 font-medium text-brand-secondary">Monedas</th>
+                      <th className="px-4 py-3 font-medium">Tarifa</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {liveProducts.map((p) => (
+                      <tr key={p._id} className="border-b border-slate-200 last:border-0 hover:bg-slate-50 transition-colors">
+                        <td className="px-4 py-4 font-medium text-slate-900 flex items-center gap-3">
+                          <img src={p.imageUrl || ''} alt="" className="w-10 h-10 object-cover rounded-md border border-slate-200" />
+                          <div>
+                            <div className="font-semibold line-clamp-1">{p.name}</div>
+                            <div className="text-xs text-slate-400 font-normal line-clamp-1 max-w-[150px]">{p.description}</div>
+                          </div>
+                        </td>
+                        <td className="px-4 py-4 text-slate-500 text-sm">{p.category}</td>
+                        <td className="px-4 py-4">
+                          <span className={`text-xs font-semibold px-2 py-1 rounded-md ${
                             p.status === 'Operativo' ? 'bg-[#50e3c2]/10 text-[#50e3c2]' : 'bg-red-500/10 text-red-500'
                           }`}>
-                          {p.status}
-                        </span>
-                      </td>
-                      <td className="px-4 py-4 font-mono font-medium text-brand-secondary">
-                        {p.coins || 0}
-                      </td>
-                      <td className="px-4 py-4 text-slate-500">
-                        {formatPrice(p.price)}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                            {p.status}
+                          </span>
+                        </td>
+                        <td className="px-4 py-4 font-bold text-brand-secondary text-sm">{p.coins}</td>
+                        <td className="px-4 py-4 text-slate-400 text-sm">{formatPrice(p.price)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
         </div>
-
       </div>
     </div>
   );
