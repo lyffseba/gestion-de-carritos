@@ -41,20 +41,17 @@ export default async function AdminDashboard({
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-7xl font-sans text-slate-700">
-      <div className="flex justify-between items-center mb-8 border-b border-slate-200 pb-4">
+      <div className="flex justify-between items-end mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900 flex items-center gap-3 tracking-tight">
-            <div className="bg-slate-100 p-2 rounded-lg border border-slate-200">
-              <Settings className="w-5 h-5 text-slate-900" />
-            </div>
+          <h1 className="text-3xl font-semibold text-slate-900 tracking-tight">
             Panel de Administración
           </h1>
-          <p className="text-slate-400 mt-2 text-sm">Gestión de inventario y alta de nuevos vehículos.</p>
+          <p className="text-slate-500 mt-1 text-sm font-medium">Gestión financiera, inventario y alta de vehículos.</p>
         </div>
       </div>
 
-      <div className="mb-10">
-        <h2 className="text-lg font-bold mb-4 text-slate-900">Resumen Financiero Global</h2>
+      <div className="mb-12">
+        <h2 className="text-sm font-bold tracking-widest uppercase text-slate-400 mb-4">Resumen Financiero Global</h2>
         <FinancialSummary 
           revenue={globalRevenue} 
           expenses={globalExpenses} 
@@ -73,87 +70,87 @@ export default async function AdminDashboard({
         
         {/* ADD NEW PRODUCT FORM */}
         <div className="lg:col-span-1">
-          <div className="bg-white shadow-sm border border-slate-200 rounded-xl p-6">
-            <h2 className="text-lg font-bold mb-6 border-b border-slate-200 pb-3 text-slate-900">
+          <div className="bg-white shadow-sm border border-slate-200 rounded-2xl p-6">
+            <h2 className="text-sm font-bold tracking-widest uppercase text-slate-400 mb-6">
               Añadir Nuevo Vehículo
             </h2>
             
-            <form action={addProductAction} className="space-y-4 text-sm font-medium">
+            <form action={addProductAction} className="space-y-5 text-sm font-medium">
               <div>
-                <label htmlFor="name" className="block text-slate-500 mb-1.5">Nombre (Vehículo)</label>
+                <label htmlFor="name" className="block text-slate-700 mb-1.5 font-semibold">Nombre (Vehículo)</label>
                 <input 
                   type="text" 
                   id="name" 
                   name="name" 
                   required
-                  className="w-full border border-slate-200 bg-slate-50 rounded-lg px-3 py-2.5 text-slate-900 focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full border border-slate-200 bg-white shadow-sm rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all placeholder-slate-400"
                   placeholder="ej. Tren Safari (Verde)"
                 />
               </div>
 
               <div>
-                <label htmlFor="category" className="block text-slate-500 mb-1.5">Ubicación Asignada</label>
+                <label htmlFor="category" className="block text-slate-700 mb-1.5 font-semibold">Ubicación Asignada</label>
                 <select 
                   name="category" 
                   id="category"
-                  className="w-full border border-slate-200 bg-slate-50 rounded-lg px-3 py-2.5 text-slate-900 focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full border border-slate-200 bg-white shadow-sm rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
                 >
                   <option value="Milenio Plaza">Milenio Plaza</option>
-                                    <option value="Mercurio">Mercurio</option>
+                  <option value="Mercurio">Mercurio</option>
                   <option value="Mi Centro El Porvenir">Mi Centro El Porvenir</option>
-                                  </select>
+                </select>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="price" className="block text-slate-500 mb-1.5">Tarifa (COP)</label>
+                  <label htmlFor="price" className="block text-slate-700 mb-1.5 font-semibold">Tarifa (COP)</label>
                   <input 
                     type="number" 
                     id="price" 
                     name="price" 
                     defaultValue="2000"
                     required
-                    className="w-full border border-slate-200 bg-slate-50 rounded-lg px-3 py-2.5 text-slate-900 focus:outline-none focus:border-blue-500 transition-colors"
+                    className="w-full border border-slate-200 bg-white shadow-sm rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
                   />
                 </div>
                 <div>
-                  <label htmlFor="coins" className="block text-brand-secondary mb-1.5">🪙 Monedas</label>
+                  <label htmlFor="coins" className="block text-brand-secondary mb-1.5 font-semibold">🪙 Monedas</label>
                   <input 
                     type="number" 
                     id="coins" 
                     name="coins" 
                     defaultValue="0"
                     required
-                    className="w-full border border-slate-200 bg-slate-50 rounded-lg px-3 py-2.5 text-slate-900 focus:outline-none focus:border-brand-secondary transition-colors"
+                    className="w-full border border-slate-200 bg-white shadow-sm rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:border-brand-secondary focus:ring-1 focus:ring-brand-secondary transition-all"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="imageUrl" className="block text-slate-500 mb-1.5">URL de la Foto</label>
+                <label htmlFor="imageUrl" className="block text-slate-700 mb-1.5 font-semibold">URL de la Foto</label>
                 <input 
                   type="url" 
                   id="imageUrl" 
                   name="imageUrl" 
                   required
-                  className="w-full border border-slate-200 bg-slate-50 rounded-lg px-3 py-2.5 text-slate-900 focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full border border-slate-200 bg-white shadow-sm rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all placeholder-slate-400"
                   placeholder="https://..."
                 />
               </div>
 
               <div>
-                <label htmlFor="description" className="block text-slate-500 mb-1.5">Detalles / Mantenimiento</label>
+                <label htmlFor="description" className="block text-slate-700 mb-1.5 font-semibold">Detalles / Mantenimiento</label>
                 <textarea 
                   name="description" 
                   id="description" 
                   rows={3}
                   required
-                  className="w-full border border-slate-200 bg-slate-50 rounded-lg px-3 py-2.5 text-slate-900 focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full border border-slate-200 bg-white shadow-sm rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all placeholder-slate-400"
                   placeholder="Observaciones..."
                 ></textarea>
               </div>
 
-              <Button type="submit" className="w-full bg-white hover:bg-indigo-700 text-black border-transparent font-medium mt-6 py-2.5 rounded-lg">
+              <Button type="submit" className="w-full bg-slate-900 hover:bg-slate-800 text-white font-medium mt-6 py-6 rounded-lg transition-colors">
                 Registrar Vehículo
               </Button>
             </form>
@@ -162,45 +159,47 @@ export default async function AdminDashboard({
 
         {/* INVENTORY TABLE */}
         <div className="lg:col-span-2">
-          <div className="bg-white shadow-sm border border-slate-200 rounded-xl p-6">
-            <h2 className="text-lg font-bold mb-6 border-b border-slate-200 pb-3 text-slate-900">
-              Inventario Activo ({liveProducts.length})
-            </h2>
+          <div className="bg-white shadow-sm border border-slate-200 rounded-2xl overflow-hidden">
+            <div className="p-6 border-b border-slate-100 flex justify-between items-center">
+              <h2 className="text-sm font-bold tracking-widest uppercase text-slate-400">
+                Inventario Activo ({liveProducts.length})
+              </h2>
+            </div>
 
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-left border-collapse">
-                <thead className="text-xs text-slate-500 uppercase bg-slate-50 border-b border-slate-200">
+                <thead className="text-[10px] text-slate-400 uppercase tracking-widest bg-slate-50 border-b border-slate-200">
                   <tr>
-                    <th className="px-4 py-3 font-medium">Vehículo</th>
-                    <th className="px-4 py-3 font-medium">Ubicación</th>
-                    <th className="px-4 py-3 font-medium">Estado</th>
-                    <th className="px-4 py-3 font-medium text-brand-secondary">Monedas</th>
-                    <th className="px-4 py-3 font-medium">Tarifa</th>
+                    <th className="px-6 py-4 font-semibold">Vehículo</th>
+                    <th className="px-6 py-4 font-semibold">Ubicación</th>
+                    <th className="px-6 py-4 font-semibold">Estado</th>
+                    <th className="px-6 py-4 font-semibold text-brand-secondary">Monedas</th>
+                    <th className="px-6 py-4 font-semibold">Tarifa</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="divide-y divide-slate-100">
                   {liveProducts.map((p) => (
-                    <tr key={p._id} className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
-                      <td className="px-4 py-4 font-medium text-slate-900 flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-md bg-slate-100 border border-slate-200 overflow-hidden flex-shrink-0">
-                          <img src={p.imageUrl} alt={p.name} className="w-full h-full object-cover" />
+                    <tr key={p._id} className="hover:bg-slate-50/50 transition-colors group cursor-pointer">
+                      <td className="px-6 py-4 font-medium text-slate-900 flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-lg bg-slate-100 border border-slate-200 overflow-hidden flex-shrink-0">
+                          <img src={p.imageUrl} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                         </div>
                         <span className="line-clamp-1">{p.name}</span>
                       </td>
-                      <td className="px-4 py-4 text-slate-500">
+                      <td className="px-6 py-4 text-slate-500 font-medium">
                         {p.category}
                       </td>
-                      <td className="px-4 py-4">
-                        <span className={`px-2.5 py-1 rounded-full text-xs font-medium border ${
-                            p.status === 'Operativo' ? 'bg-[#50e3c2]/10 text-[#50e3c2]' : 'bg-red-500/10 text-red-500'
+                      <td className="px-6 py-4">
+                        <span className={`px-3 py-1 rounded-md text-xs font-semibold border ${
+                            p.status === 'Operativo' ? 'bg-emerald-50 border-emerald-200 text-emerald-600' : 'bg-red-50 border-red-200 text-red-600'
                           }`}>
                           {p.status}
                         </span>
                       </td>
-                      <td className="px-4 py-4 font-mono font-medium text-brand-secondary">
+                      <td className="px-6 py-4 font-mono font-medium text-slate-900">
                         {p.coins || 0}
                       </td>
-                      <td className="px-4 py-4 text-slate-500">
+                      <td className="px-6 py-4 text-slate-500 font-medium">
                         {formatPrice(p.price)}
                       </td>
                     </tr>
