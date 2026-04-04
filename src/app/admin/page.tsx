@@ -2,6 +2,7 @@ import { addProductAction } from './actions';
 import { MOCK_PRODUCTS } from '@/lib/mockData';
 import { Button } from '@/components/ui/Button';
 import { Settings } from 'lucide-react';
+import { FinancialSummary } from '@/components/ui/FinancialSummary';
 
 export const dynamic = 'force-dynamic';
 
@@ -32,6 +33,12 @@ export default async function AdminDashboard({
     }).format(price);
   };
 
+  // Calculate mock global financial data based on coins and standard rent
+  const totalCoins = liveProducts.reduce((sum, p) => sum + (p.coins || 0), 0);
+  const coinValue = 2000; // 2000 COP per coin
+  const globalRevenue = totalCoins * coinValue;
+  const globalExpenses = 595000 * 3; // Let's assume standard rent ($595k) across all 3 malls
+
   return (
     <div className="container mx-auto px-4 py-12 max-w-7xl font-sans text-slate-700">
       <div className="flex justify-between items-center mb-8 border-b border-slate-200 pb-4">
@@ -44,6 +51,15 @@ export default async function AdminDashboard({
           </h1>
           <p className="text-slate-400 mt-2 text-sm">Gestión de inventario y alta de nuevos vehículos.</p>
         </div>
+      </div>
+
+      <div className="mb-10">
+        <h2 className="text-lg font-bold mb-4 text-slate-900">Resumen Financiero Global</h2>
+        <FinancialSummary 
+          revenue={globalRevenue} 
+          expenses={globalExpenses} 
+          currency="COP" 
+        />
       </div>
 
       {success && (
