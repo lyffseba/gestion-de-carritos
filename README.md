@@ -56,3 +56,20 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Integrate a state management solution (e.g., Zustand or Redux Toolkit) depending on cart complexity.
 - Connect to an eCommerce backend (e.g., Medusa, Shopify Storefront API, or custom).
 - Set up automated unit testing (Jest/Vitest + React Testing Library) and E2E testing (Playwright).
+
+## 🧪 Test-Driven Development (TDD) Mandate
+
+**TDD is strictly mandatory for this project.** No new features, components, or utilities should be committed without corresponding tests.
+
+- **Framework:** [Vitest](https://vitest.dev/)
+- **UI Testing:** [@testing-library/react](https://testing-library.com/)
+- **Test Scripts:**
+  - `npm run test` — Run all tests.
+  - `npm run test:ui` — Run tests with the Vitest UI dashboard.
+  - `npm run test:coverage` — Run tests and generate a coverage report.
+
+**Workflow Requirements:**
+1. Write tests *before* or alongside component/logic implementation.
+2. Ensure tests pass before pushing (`npm run test`).
+3. Maintain high code coverage (verify with `npm run test:coverage`).
+4. Utilize `data-testid` when necessary, but prefer querying by accessible ARIA roles (e.g., `getByRole('button')`).
