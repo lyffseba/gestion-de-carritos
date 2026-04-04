@@ -58,6 +58,7 @@ export default async function AdminDashboard({
         <FinancialSummary 
           revenue={globalRevenue} 
           expenses={globalExpenses} 
+          activeUnits={liveProducts.length}
           currency="COP" 
         />
       </div>
